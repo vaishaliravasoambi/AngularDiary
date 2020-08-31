@@ -1,0 +1,38 @@
+
+ <button (click)='backToDiary()'>My Contact Diary</button>
+ <button (click)='createContact()'>Create contact</button>
+ <div *ngIf='contactcreate==false'>
+<ul class="contact">
+  <li *ngFor="let contact of contactlist"
+    [class.selected]="contact === selectedContact"
+    (click)="onSelect(contact)">
+    <span class="badge">{{contact.Mobile_number}}</span> {{contact.name}}
+  </li>
+</ul>
+</div>
+
+
+<div *ngIf='isContactSelected==true' class='selectedcon'> 
+  <div *ngIf='contactcreate==false'>
+
+ <h2>{{selectedContact.name}} Details</h2>
+<div><span>Mobile_number: </span>{{selectedContact.Mobile_number}}</div>
+<div><span>name: </span>{{selectedContact.name}}</div>
+
+<!-- <div>
+    <label>name:
+      <input [(ngModel)]="selectedContact.name" placeholder="name"/>
+    </label> -->
+  </div> 
+  </div>
+  <div *ngIf='contactcreate==true'>
+        
+   <label>Name :</label>
+   <input placeholder="name" [(ngModel)]='name'/>
+   <label>Mobile No :</label>
+   <input placeholder="Mobile number" [(ngModel)]='Mobile_number'/>
+   <button (click)='clickContact()'>CREATE</button>
+   <button (click)=backToDiary()> Back</button>
+  </div>
+  
+  
